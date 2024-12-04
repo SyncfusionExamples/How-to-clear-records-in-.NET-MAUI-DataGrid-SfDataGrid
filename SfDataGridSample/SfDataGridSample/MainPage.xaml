@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:SfDataGridSample"
+             x:Class="SfDataGridSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:EmployeeViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Button Text="Clear Records"
+                Padding="10"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Clicked="Button_Clicked" />
+        
+        <syncfusion:SfDataGrid x:Name="sfGrid"
+                               GridLinesVisibility="Both"
+                               AutoGenerateColumnsMode="None"
+                               HorizontalOptions="EndAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               HeaderGridLinesVisibility="Both"
+                               ColumnWidthMode="Auto"
+                               ItemsSource="{Binding Employees}">
+
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridNumericColumn MappingName="EmployeeID"
+                                                  HeaderText="Employee ID"
+                                                  Format="#">
+                </syncfusion:DataGridNumericColumn>
+                <syncfusion:DataGridTextColumn MappingName="Name"
+                                               HeaderText="Employee Name" />
+                <syncfusion:DataGridTextColumn MappingName="Title"
+                                               HeaderText="Designation" />
+                <syncfusion:DataGridDateColumn MappingName="HireDate"
+                                               HeaderText="Hire Date" />
+            </syncfusion:SfDataGrid.Columns>
+
+        </syncfusion:SfDataGrid>
+    </StackLayout>
+
+</ContentPage>
